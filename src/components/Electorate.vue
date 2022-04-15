@@ -6,6 +6,8 @@ export default {
     margin: Number,
     sittingParty: String,
     candidates: Array,
+    content: String,
+    LIBMargin: Number,
   },
   methods: {
     filterEmpty(arr: string[]) {
@@ -26,6 +28,7 @@ export default {
     <div class="sitting-mp">{{ sittingMP }}</div>
     <div class="electorate-margin">{{ margin }}</div>
     <div class="sitting-party">{{ sittingParty }}</div>
+    <div class="content">{{ content }}</div>
     <div class="candidtates">
       Major candidates:
       <ul>

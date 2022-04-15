@@ -14,6 +14,8 @@
       :sittingParty="Electorate.Party"
       :margin="Electorate.Margin"
       :candidates="Electorate.Candidates"
+      :content="Electorate.Content"
+      :LIBMargin="Electorate.LIBMargin"
     />
   </div>
   <div class="grid">
@@ -25,6 +27,8 @@
       :sittingParty="Electorate.Party"
       :margin="Electorate.Margin"
       :candidates="Electorate.Candidates"
+      :content="Electorate.Content"
+      :LIBMargin="Electorate.LIBMargin"
     />
   </div>
   <div class="grid">
@@ -41,6 +45,8 @@
       :sittingParty="Electorate.Party"
       :margin="Electorate.Margin"
       :candidates="Electorate.Candidates"
+      :content="Electorate.Content"
+      :LIBMargin="Electorate.LIBMargin"
     />
   </div>
 </template>
@@ -74,14 +80,14 @@ export default class App extends Vue {
   // mounted() {}
 }
 
-function test() {
-  const slider = <HTMLInputElement>document.getElementById("myRange");
-  const output = <HTMLInputElement>document.getElementById("demo");
+// function test() {
+//   const slider = <HTMLInputElement>document.getElementById("myRange");
+//   const output = <HTMLInputElement>document.getElementById("demo");
 
-  slider.addEventListener("change", function () {
-    output.textContent = slider.value;
-  });
-}
+//   slider.addEventListener("change", function () {
+//     output.textContent = slider.value;
+//   });
+// }
 </script>
 
 <style>
