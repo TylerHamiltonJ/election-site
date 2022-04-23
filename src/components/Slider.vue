@@ -26,6 +26,17 @@ label {
 import { ref, watchEffect } from "vue";
 const sliderVal = ref();
 
+function convertToParty(
+  fragment: any,
+  party: any,
+  newGrid: string,
+  newPartyText: string
+) {
+  const grid = document.getElementById(newGrid);
+  party.textContent = newPartyText;
+  grid?.prepend(fragment);
+}
+
 function moveToGrid(parent: any, currentGrid: any, originalParty: any) {
   const mainOpponent = parent?.getAttribute("main-oponent");
   const incumbent = parent?.getAttribute("original-incumbent");
@@ -37,16 +48,15 @@ function moveToGrid(parent: any, currentGrid: any, originalParty: any) {
   }
   const fragment = document.createDocumentFragment();
   if (parent) fragment.appendChild(parent);
-  const getGrid = () => {
-    if (originalParty === "ALP")
-      return currentGrid === originalParty ? "liberal-grid" : "labor-grid";
-    if (originalParty === "LIB")
-      return currentGrid === originalParty ? "labor-grid" : "liberal-grid";
-    return "independent-grid";
-  };
-  const grid = document.getElementById(getGrid());
-  // Append fragment to desired element:
-  grid?.prepend(fragment);
+  if (originalParty === "ALP" && currentGrid === originalParty)
+    convertToParty(fragment, party, "liberal-grid", "LIB");
+  if (originalParty === "ALP" && currentGrid !== originalParty)
+    convertToParty(fragment, party, "labor-grid", "ALP");
+  if (originalParty === "LIB" && currentGrid === originalParty)
+    convertToParty(fragment, party, "labor-grid", "ALP");
+  if (originalParty === "LIB" && currentGrid !== originalParty)
+    convertToParty(fragment, party, "liberal-grid", "LIB");
+  return "independent-grid";
 }
 
 watchEffect(() => {
